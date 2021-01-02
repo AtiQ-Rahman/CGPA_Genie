@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>CGPA Genie</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./dist/jquery-spinner.min.css" />
+    <script src="./dist/jquery-spinner.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body class='snippet-body' id="spinner_div">
+    <audio autoplay>
+        <source src="dist/CGPA_Genie.mp3" type="audio/mp3">
+        </audio>
+    <!-- <audio src="dist/CGPA_Genie.mp3" id="audioID"></audio> -->
+    <!-- <audio id="audio-player" src="dist/CGPA_Genie.mp3" type="audio/mp3" controls="controls"></audio> -->
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2 id="heading">Predict Your CGPA!</h2>
+                    <p>Fill all form field to go to next step</p>
+                    <form id="msform">
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active" id="one"></li>
+                            <li id="two"></li>
+                            <li id="three"></li>
+                            <li id="four"></li>
+                            <li id="five"></li>
+                            <li id="six"></li>
+                            <li id="seven"></li>
+                            <li id="eight"></li>
+                            <li id="nine"></li>
+                            <li id="ten"></li>
+                            <li id="eleven"></li>
+                            <li id="confirm"></li>
+                        </ul>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> <br>
+                        <!-- fieldsets -->
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Reading time</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 1 - 12</h2>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Reading_time_input1" name="Reading_time_" value="read before exam only">
+                                        <label for="Reading_time_input1">
+                                            <div class="entry-label"> Read Before Only Exam</div>  
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Reading_time_input2" name="Reading_time_" value="1 or 2 hours a day">
+                                        <label for="Reading_time_input2">                                 
+                                            <div class="entry-label"> Less than 2 hours</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Reading_time_input3" name="Reading_time_" value="3 hours or greater than 3">
+                                        <label for="Reading_time_input3">                                         
+                                            <div class="entry-label">More than 3 hours</div>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <!-- <svg width="0" height="0" viewBox="0 0 40 140">
+                                    <defs>
+                                        <mask id="holes">
+                                        <rect x="0" y="0" width="100" height="140" fill="white" />
+                                        <circle r="12" cx="20" cy="20" fill="black"/>
+                                        <circle r="12" cx="20" cy="70" fill="black"/>
+                                        <circle r="12" cx="20" cy="120" fill="black"/>
+                                        </mask>
+                                    </defs>
+                                </svg> -->
+
+
+                            </div>
+                            <input type="button" name="next" class="next action-button" value="Next" />
+                        </fieldset>
+
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Sleep Time</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 2 - 12</h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Sleep_Time_input1" name="Sleep_Time_" value="below 6 hours">
+                                        <label for="Sleep_Time_input1">   
+                                            <div class="entry-label">Less than 6 hours</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Sleep_Time_input2" name="Sleep_Time_" value="7 hours">
+                                        <label for="Sleep_Time_input2">                                 
+                                            <div class="entry-label">7-8 hours</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Sleep_Time_input3" name="Sleep_Time_" value="above 8 hours">
+                                        <label for="Sleep_Time_input3">                                         
+                                            <div class="entry-label">More than 8 hours</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" name="next" class="next action-button" value="Next" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Relationship Status</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 3 - 12</h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Relationship_Status_input1" name="Relationship_Status_" value="Yes">
+                                        <label for="Relationship_Status_input1">   
+                                            <div class="entry-label">Double</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Relationship_Status_input2" name="Relationship_Status_" value="No">
+                                        <label for="Relationship_Status_input2">                                 
+                                            <div class="entry-label">Single</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Class Attendence</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 4 - 12</h2>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Class_Attendence_input1" name="Class_Attendence_" value="Yes">
+                                        <label for="Class_Attendence_input1">   
+                                            <div class="entry-label">Regular</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Class_Attendence_input2" name="Class_Attendence_" value="No">
+                                        <label for="Class_Attendence_input2">                                 
+                                            <div class="entry-label">Irregular</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Study Style</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 5 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Study_Style_input1" name="Study_Style_" value="Yes">
+                                        <label for="Study_Style_input1">   
+                                            <div class="entry-label">Study in group</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Study_Style_input2" name="Study_Style_" value="No">
+                                        <label for="Study_Style_input2">                                 
+                                            <div class="entry-label">Study alone</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Study Materials</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 6 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Study_Materials_input1" name="Study_Materials_" value="Book">
+                                        <label for="Study_Materials_input1">   
+                                            <div class="entry-label">Books</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Study_Materials_input2" name="Study_Materials_" value="Slide">
+                                        <label for="Study_Materials_input2">                                 
+                                            <div class="entry-label">Slides</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Study_Materials_input1" name="Study_Materials_" value="Both">
+                                        <label for="Study_Materials_input1">   
+                                            <div class="entry-label">Both</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div><input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Drug Addiction</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 7 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Drug_Addiction_input1" name="Drug_Addiction_" value="Yes">
+                                        <label for="Drug_Addiction_input1">   
+                                            <div class="entry-label">Addicted</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Drug_Addiction_input2" name="Drug_Addiction_" value="No">
+                                        <label for="Drug_Addiction_input2">                                 
+                                            <div class="entry-label">Non-addicted</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Attentivenss while Reading</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 8 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Attentivenss_while_Reading_input1" name="Attentivenss_while_Reading_" value="Yes">
+                                        <label for="Attentivenss_while_Reading_input1">   
+                                            <div class="entry-label">Attentive</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Attentivenss_while_Reading_input2" name="Attentivenss_while_Reading_" value="No">
+                                        <label for="Attentivenss_while_Reading_input2">                                 
+                                            <div class="entry-label">Inattentive</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Friends Gathering</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 9 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Friends_Gathering_input1" name="Friends_Gathering_" value="no gathering">
+                                        <label for="Friends_Gathering_input1">   
+                                            <div class="entry-label">No gathering</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Friends_Gathering_input2" name="Friends_Gathering_" value="1 hours">
+                                        <label for="Friends_Gathering_input2">                                 
+                                            <div class="entry-label">1 hour daily</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Friends_Gathering_input1" name="Friends_Gathering_" value="above 2 hours">
+                                        <label for="Friends_Gathering_input1">   
+                                            <div class="entry-label">More than 2 hours</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Play online Games</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 10 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Play_online_Games_input1" name="Play_online_Games_" value="Yes">
+                                        <label for="Play_online_Games_input1">   
+                                            <div class="entry-label">Yes</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Play_online_Games_input2" name="Play_online_Games_" value="No">
+                                        <label for="Play_online_Games_input2">                                 
+                                            <div class="entry-label">No</div>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title">Residence</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps">Step 11 - 12</h2>
+                                    </div>
+                                </div>
+                                <div style="width:100%;">
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Residence_input1" name="Residence_" value="Hall">
+                                        <label for="Residence_input1">   
+                                            <div class="entry-label">Hall</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Residence_input2" name="Residence_" value="With parents">
+                                        <label for="Residence_input2">                                 
+                                            <div class="entry-label">With Your Parents</div>
+                                        </label>
+                                    </div>
+                                    <div style="display: flex;">
+                                        <input type="radio" id="Residence_input1" name="Residence_" value="House Rent">
+                                        <label for="Residence_input1">   
+                                            <div class="entry-label">House rent</div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <input type="button" name="next" id="submit_btn" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="fs-title" id="Future">Wait!! Future is Loading!!</h2>
+                                    </div>
+                                    <div class="col-5">
+                                        <h2 class="steps" style="color: black;">Final Step</h2>
+                                    </div>
+                                </div> <br><br>
+                                <h2 class="text-center" style="color: red;"><strong id="Sucess">CGPA 0.00 (Failed :v)</strong></h2> <br>
+                                <div class="row justify-content-center">
+                                    <div id="img_div" class="col-2" style="display: none;"> <img src="dist/monkey.png" width="300" height="350">
+                                        <!-- <div class="col-2"> <img src="dist/monkey.png" class="fit-image" width="300" height="350"> -->
+                                    </div>
+                                </div> <br><br>
+                                <div class="row justify-content-center">
+                                    <div class="col-7 text-center">
+                                        <h5 class="purple-text text-center">You have successfully done!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+    <script src="js/index.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var spinner = new jQuerySpinner({
+                parentId: 'spinner_div',
+
+            });
+
+
+
+
+            let sound = document.getElementById("audioID");
+
+            sound.loop = true; //if you want it to restart playing automatically when it ends
+            sound.play();
+
+            $("#submit_btn").click(function() {
+
+                var ReadingTime = $("input[name='Reading_time_']:checked").val();
+                var SleepingTime = $("input[name='Sleep_Time_']:checked").val();
+                var Relationship_Status = $("input[name='Relationship_Status_']:checked").val();
+                var Study_Style = $("input[name='Study_Style_']:checked").val();
+                var Class_Attendence = $("input[name='Class_Attendence_']:checked").val();
+                var Study_Materials = $("input[name='Study_Materials_']:checked").val();
+                var Drug_Addiction = $("input[name='Drug_Addiction_']:checked").val();
+                var Attentivenss_while_Reading = $("input[name='Attentivenss_while_Reading_']:checked").val();
+                var Play_online_Games = $("input[name='Play_online_Games_']:checked").val();
+                var Residence = $("input[name='Residence_']:checked").val();
+                var Friends_Gathering = $("input[name='Friends_Gathering_']:checked").val();
+
+                spinner.show();
+
+                setTimeout(function() {
+
+                    spinner.hide();
+
+                    // $("#Sucess").html(ReadingTime + " ----- " + SleepingTime + "----" + Relationship_Status + "----" + Study_Style + "----" + Class_Attendence + "----" + Study_Materials + Drug_Addiction + "-----" + Attentivenss_while_Reading + "----" + Play_online_Games + "------" + Residence + "----" + Friends_Gathering);
+
+                    $('#img_div').show();
+                    $("#Future").html("Predicted CGPA");
+                    $("#Sucess").html("3.81" + "!");
+                }, 3000);
+
+
+
+
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>
+
+<!-- To disable copy: onmousedown='return false'-->
+<!-- To disable  right click: oncontextmenu=' return false'  -->
+<!-- Use: <body onmousedown='return false' oncontextmenu=' return false' class='snippet-body '></body> -->
