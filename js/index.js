@@ -4,11 +4,25 @@ $(document).ready(function() {
     var opacity;
     var current = 1;
     var steps = $("fieldset").length;
+    var arr = ["Reading_time_", "Sleep_Time_", "Relationship_Status_", "Class_Attendence_", "Study_Style_", "Study_Materials_",
+
+        "Drug_Addiction_", "Attentivenss_while_Reading_", "Friends_Gathering_", "Play_online_Games_", "Residence_"
+    ];
+    var stepNum = 0;
 
     setProgressBar(current);
 
     $(".next").click(function() {
 
+        var radioCheck = "input[name='" + arr[stepNum] + "']:checked";
+        if (typeof $(radioCheck).val() === "undefined") {
+            alert("Please Fill Up");
+            return;
+        } else {
+            stepNum++;
+
+
+        }
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
 
@@ -35,7 +49,7 @@ $(document).ready(function() {
     });
 
     $(".previous").click(function() {
-
+        stepNum--;
         current_fs = $(this).parent();
         previous_fs = $(this).parent().prev();
 
@@ -70,6 +84,7 @@ $(document).ready(function() {
     }
 
     $(".submit").click(function() {
+
         return false;
     })
 

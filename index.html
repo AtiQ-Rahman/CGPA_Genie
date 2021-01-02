@@ -438,8 +438,26 @@
 
             });
 
+            // var arr = ["Reading_time_", "Sleep_Time_", "Relationship_Status_", "Study_Style_"];
+            // var stepNum = 0;
+
+            // $(".next").click(function() {
+
+            //     var radioCheck = "input[name='" + arr[stepNum] + "']:checked";
+            //     if (typeof $(radioCheck).val() === "undefined") {
+            //         alert("Uncheked");
+            //     } else {
+            //         stepNum++;
 
 
+            //     }
+            // });
+
+            // $(".previous").click(function() {
+            //     alert(" Galum");
+            //     typeof $("input[name='yourRadioName']:checked").val() === "undefined";
+            //     stepNum--;
+            // });
 
 
 
@@ -457,19 +475,24 @@
                 var Residence = $("input[name='Residence_']:checked").val();
                 var Friends_Gathering = $("input[name='Friends_Gathering_']:checked").val();
 
-                spinner.show();
+                var radioCheck = "input[name='Residence_']:checked";
+                if (typeof $(radioCheck).val() === "undefined") {
 
-                setTimeout(function() {
+                    return;
+                } else {
+                    spinner.show();
 
-                    spinner.hide();
+                    setTimeout(function() {
 
-                    // $("#Sucess").html(ReadingTime + " ----- " + SleepingTime + "----" + Relationship_Status + "----" + Study_Style + "----" + Class_Attendence + "----" + Study_Materials + Drug_Addiction + "-----" + Attentivenss_while_Reading + "----" + Play_online_Games + "------" + Residence + "----" + Friends_Gathering);
+                        spinner.hide();
 
-                    $('#img_div').show();
-                    $("#Future").html("Predicted CGPA");
-                    $("#Sucess").html("3.81" + "!");
-                }, 2000);
+                        // $("#Sucess").html(ReadingTime + " ----- " + SleepingTime + "----" + Relationship_Status + "----" + Study_Style + "----" + Class_Attendence + "----" + Study_Materials + Drug_Addiction + "-----" + Attentivenss_while_Reading + "----" + Play_online_Games + "------" + Residence + "----" + Friends_Gathering);
 
+                        $('#img_div').show();
+                        $("#Future").html("Predicted CGPA");
+                        $("#Sucess").html("3.81" + "!");
+                    }, 2000);
+                }
 
 
 
