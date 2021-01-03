@@ -423,13 +423,14 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
     <script src="js/index.js"></script>
     <script>
         $(document).ready(function() {
-
+            var model;
             // let sound = document.getElementById("audioID");
             // sound.currentTime = 0;
             // sound.loop = true; //if you want it to restart playing automatically when it ends
@@ -464,7 +465,7 @@
 
 
             $("#submit_btn").click(function() {
-
+                var array = [...Array(28)].map(() => 0);
                 var ReadingTime = $("input[name='Reading_time_']:checked").val();
                 var SleepingTime = $("input[name='Sleep_Time_']:checked").val();
                 var Relationship_Status = $("input[name='Relationship_Status_']:checked").val();
@@ -482,6 +483,99 @@
 
                     return;
                 } else {
+
+                    if (ReadingTime == "read before exam only") {
+                        array[0] = 1;
+                    } else if (ReadingTime == "1 or 2 hours a day") {
+                        array[1] = 1;
+                    } else if (ReadingTime == "3 hours or greater than 3") {
+                        array[2] = 1;
+                    }
+
+                    //SleepingTime
+                    if (SleepingTime == "below 6 hours") {
+                        array[3] = 1;
+                    } else if (SleepingTime == "7 hours") {
+                        array[4] = 1;
+                    } else if (SleepingTime == "above 8 hours") {
+                        array[5] = 1;
+                    }
+
+
+                    if (Relationship_Status == "Yes") {
+                        array[6] = 1;
+                    } else if (Relationship_Status == "No") {
+                        array[7] = 1;
+                    }
+
+
+                    if (Class_Attendence == "Yes") {
+                        array[8] = 1;
+                    } else if (Class_Attendence == "No") {
+                        array[9] = 1;
+                    }
+
+
+                    if (Study_Style == "Yes") {
+                        array[10] = 1;
+                    } else if (Study_Style == "No") {
+                        array[11] = 1;
+                    }
+
+
+
+                    if (Study_Materials == "Book") {
+                        array[12] = 1;
+                    } else if (Study_Materials == "Slide") {
+                        array[13] = 1;
+                    } else if (Study_Materials == "Both") {
+                        array[14] = 1;
+                    }
+
+
+
+                    if (Drug_Addiction == "Yes") {
+                        array[15] = 1;
+                    } else if (Drug_Addiction == "No") {
+                        array[16] = 1;
+                    }
+
+
+
+                    if (Attentivenss_while_Reading == "Yes") {
+                        array[17] = 1;
+                    } else if (Attentivenss_while_Reading == "No") {
+                        array[18] = 1;
+                    }
+
+
+
+
+                    if (Friends_Gathering == "no gathering") {
+                        array[19] = 1;
+                    } else if (Friends_Gathering == "1 hours") {
+                        array[20] = 1;
+                    } else if (Friends_Gathering == "above 2 hours") {
+                        array[21] = 1;
+                    }
+
+
+
+                    if (Play_online_Games == "Yes") {
+                        array[22] = 1;
+                    } else if (Play_online_Games == "No") {
+                        array[23] = 1;
+                    }
+
+                    if (Residence == "Hall") {
+                        array[24] = 1;
+                    } else if (Residence == "With parents") {
+                        array[25] = 1;
+                    } else if (Residence == "House Rent") {
+                        array[26] = 1;
+                    }
+
+
                     spinner.show();
 
                     setTimeout(function() {
@@ -490,19 +584,31 @@
 
                         // $("#Sucess").html(ReadingTime + " ----- " + SleepingTime + "----" + Relationship_Status + "----" + Study_Style + "----" + Class_Attendence + "----" + Study_Materials + Drug_Addiction + "-----" + Attentivenss_while_Reading + "----" + Play_online_Games + "------" + Residence + "----" + Friends_Gathering);
 
-                        $('#img_div').show();
-                        $("#Future").html("Predicted CGPA");
-                        $("#Sucess").html("3.52" + "!");
+                        predictCGPA(array);
                     }, 2000);
                 }
-
-
-
             });
-
-
-
         });
+
+        async function predictCGPA(array) {
+
+            const model = await tf.loadLayersModel("model/model.json");
+            console.log(array);
+            var input = array;
+            var CGPA = model.predict(tf.reshape([input], shape = [1, 28]), {
+                batchSize: 4
+            }).dataSync()[0];
+            if (CGPA > 4) {
+                CGPA = 4.0;
+            } else if (CGPA < 2.4) {
+                CGPA = 2.4;
+            }
+            CGPA = CGPA.toFixed(2);
+            console.log(CGPA);
+            $('#img_div').show();
+            $("#Future").html("Predicted CGPA");
+            $("#Sucess").html(CGPA + "!");
+        }
     </script>
 
 </body>
